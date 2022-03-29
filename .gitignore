@@ -33,3 +33,6 @@
 
 # Images folder
 images/*
+
+# VSCode
+.vscode/*
