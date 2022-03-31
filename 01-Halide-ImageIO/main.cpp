@@ -12,7 +12,13 @@ using namespace Halide::Tools;
 using namespace Halide::ConciseCasts;
 
 int main(int argc, char **argv) {
-    Buffer<uint8_t> input = load_image("Germany.png");
+    if(argc < 3) {
+        puts("Usage: ./main path_input_image path_output_image");
+        return 1;
+    }
+    const char * path_input = argv[1];
+    const char * path_output = argv[3];
+    Buffer<uint8_t> input = load_image(path_input);
 
     Func brighter("brighter");
     Var x("x"), y("y"), c("c");
@@ -22,7 +28,7 @@ int main(int argc, char **argv) {
 
     Buffer<uint8_t> output = 
                 brighter.realize({input.width(), input.height(), input.channels()});
-    save_image(output, "Germany_brighter.png");
+    save_image(output, path_output);
     printf("Success!\n");
     return 0;
 }
