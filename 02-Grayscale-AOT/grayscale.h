@@ -35,7 +35,6 @@ struct halide_filter_metadata_t;
 #endif
 
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
