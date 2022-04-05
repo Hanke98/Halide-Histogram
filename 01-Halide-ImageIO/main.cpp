@@ -17,13 +17,14 @@ int main(int argc, char **argv) {
         return 1;
     }
     const char * path_input = argv[1];
-    const char * path_output = argv[3];
+    const char * path_output = argv[2];
     Buffer<uint8_t> input = load_image(path_input);
 
     Func brighter("brighter");
     Var x("x"), y("y"), c("c");
     Expr e = f32(input(x, y, c)) * 1.5f;
     brighter(x, y, c) = u8_sat(e);
+    brighter.reorder(c, x, y);
     brighter.print_loop_nest();
 
     Buffer<uint8_t> output = 
