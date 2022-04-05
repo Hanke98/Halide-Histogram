@@ -1,5 +1,5 @@
-#ifndef HALIDE__threshold_h
-#define HALIDE__threshold_h
+#ifndef HALIDE__include___threshold_binary_inv_h
+#define HALIDE__include___threshold_binary_inv_h
 #include <stdint.h>
 
 // Forward declarations of the types used in the interface
@@ -41,15 +41,15 @@ extern "C" {
 #endif
 
 HALIDE_FUNCTION_ATTRS
-int threshold_par_for_result_s0_y_rebased(void *__user_context, int32_t _result_s0_y_rebased, uint8_t *_closure_arg);
+int threshold_binary_inv_par_for_threshold_binary_inv_s0_y_rebased(void *__user_context, int32_t _threshold_binary_inv_s0_y_rebased, uint8_t *_closure_arg__1);
 HALIDE_FUNCTION_ATTRS
-int threshold(struct halide_buffer_t *_input_buffer, int32_t _threshold, int32_t _method, struct halide_buffer_t *_result_buffer);
+int threshold_binary_inv(struct halide_buffer_t *_input_buffer, int32_t _threshold, struct halide_buffer_t *_threshold_binary_inv_buffer);
 
 HALIDE_FUNCTION_ATTRS
-int threshold_argv(void **args);
+int threshold_binary_inv_argv(void **args);
 
 HALIDE_FUNCTION_ATTRS
-const struct halide_filter_metadata_t *threshold_metadata();
+const struct halide_filter_metadata_t *threshold_binary_inv_metadata();
 
 #ifdef __cplusplus
 }  // extern "C"
