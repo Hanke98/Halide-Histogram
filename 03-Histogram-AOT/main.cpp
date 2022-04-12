@@ -14,19 +14,20 @@ using namespace Halide::Runtime;
 using namespace Halide::Tools;
 
 int main(int argc, char **argv) {
-    if(argc < 3) {
-        puts("Usage: ./main path_input channel");
+    if(argc < 4) {
+        puts("Usage: ./main path_input channel outpath");
         return 1;
     }
     const char * path_input = argv[1];
-    const int channel = (int) atof(argv[2]);;
+    const int channel = (int) atof(argv[2]);
+    const char * path_output = argv[3];
     
     Buffer<uint8_t> input = load_image(path_input);
     Buffer<int32_t> output({256});
 
     histogram(input, channel, output);
     int32_t * data = output.data();
-    std::ofstream outFile("results/plotme.dat");
+    std::ofstream outFile(path_output);
     for (int i = 0; i < 255; i++) {
         outFile << i << " " << * (data + i) << "\n";
         std::cout << * (data + i) << " ";

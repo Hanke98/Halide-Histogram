@@ -21,7 +21,8 @@ int main(int argc, char **argv) {
     RDom r(input);
     histogram(input(r.x, r.y)) += 1;
     histogram.compute_root();
-    histogram.compile_to_static_library("histogram", {input}, "histogram");
+    histogram.compile_to_static_library("include/histogram", {input}, "histogram");
+    std::system("mv include/*.a lib/");
     std::cout << "Halide pipeline compiled, but not yet run." << std::endl;
 
     return 0;
